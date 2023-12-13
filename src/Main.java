@@ -17,12 +17,10 @@ public class Main extends JPanel {
     GraphicsConfiguration gc = gd.getDefaultConfiguration();
     
     public Main() {
-        if (gc.getImageCapabilities().isAccelerated()) {
-            System.out.println("Hardware acceleration is available.");
-        } else {
-            System.out.println("Hardware acceleration is not available.");
+        if (!gc.getImageCapabilities().isAccelerated()) {
+            throw new RuntimeException("Hardware acceleration is not available.");
         }
-        
+
         JFrame frame = new JFrame("Aqua");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,15 +29,20 @@ public class Main extends JPanel {
 
         frame.add(this);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
 
+        double ellipseRadius = 600;
+        double centerX = getWidth() / 2 - ellipseRadius / 2;
+        double centerY = getHeight() / 2 - ellipseRadius / 2;
+
         g2.setPaint(Color.RED);
-        g2.setStroke(new BasicStroke(5.0f));
-        g2.draw(new Ellipse2D.Double(0, 0, 1600, 900));
+        g2.setStroke(new BasicStroke(10.0f));
+        g2.draw(new Ellipse2D.Double(centerX, centerY, ellipseRadius, ellipseRadius));
     }
     
     public static void main(String[] args) throws Exception {
