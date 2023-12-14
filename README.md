@@ -1,6 +1,6 @@
 ## Getting Started
 
-Welcome to Aqua. Here be skeletons.
+Welcome to Aqua, here be :fish:
 
 ## Folder Structure
 
