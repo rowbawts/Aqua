@@ -1,23 +1,32 @@
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
-
 import javax.swing.JPanel;
 
 public class Canvas extends JPanel {
+    private int playerX = 100;
+    private int playerY = 100;
+    private int deltaX = 0;
+    private int deltaY = 0;
+    
+    public void movePlayer() {
+        playerX += deltaX;
+        playerY += deltaY;
+
+        repaint();
+    }
+
+    public void setDelta(int deltaX, int deltaY) {
+        this.deltaX = deltaX;
+        this.deltaY = deltaY;
+    }
+    
     public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
+        super.paintComponent(g);
 
-        double ellipseRadius = 600;
-        double centerX = getWidth() / 2 - ellipseRadius / 2;
-        double centerY = getHeight() / 2 - ellipseRadius / 2;
-
-        g2.setPaint(Color.RED);
-        g2.setStroke(new BasicStroke(10.0f));
-        g2.draw(new Ellipse2D.Double(centerX, centerY, ellipseRadius, ellipseRadius));
+        g.setColor(Color.BLUE);
+        g.fillRect(playerX, playerY, 50, 50);
     }
 
     public Canvas() {

@@ -2,6 +2,8 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
+import javax.swing.SwingUtilities;
+
 public class Launcher {
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice gd = ge.getDefaultScreenDevice();
@@ -18,6 +20,6 @@ public class Launcher {
     public static void main(String[] args) throws Exception {
         System.setProperty("sun.java2d.opengl", "true");
 
-        new Launcher();
+        SwingUtilities.invokeLater(() -> new Launcher());
     }
 }
