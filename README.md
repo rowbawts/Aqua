@@ -1,6 +1,6 @@
 ## Getting Started
 
-Welcome to the Aqua. Here be skeletons.
+Welcome to Aqua. Here be skeletons.
 
 ## Folder Structure
 
