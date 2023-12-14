@@ -11,7 +11,7 @@ public class InputListener implements KeyListener {
 
     private int moveSpeed = 1;
 
-    private boolean upPressed, downPressed, leftPressed, rightPressed;
+    private boolean leftPressed, rightPressed;
 
     public InputListener(Canvas canvas) {
         this.canvas = canvas;
@@ -43,25 +43,23 @@ public class InputListener implements KeyListener {
     private void handleKey(int keyCode, boolean pressed) {
         // Update the pressed state of each key
         switch (keyCode) {
-            case KeyEvent.VK_W:
-                upPressed = pressed;
-                break;
-            case KeyEvent.VK_S:
-                downPressed = pressed;
-                break;
             case KeyEvent.VK_A:
                 leftPressed = pressed;
                 break;
             case KeyEvent.VK_D:
                 rightPressed = pressed;
                 break;
+            case KeyEvent.VK_SPACE:
+                if (pressed && !canvas.isJumping) {
+                    canvas.jump();
+                }
+                break;
         }
 
         // Update delta values based on the combination of pressed keys
         int deltaX = (rightPressed ? moveSpeed : 0) - (leftPressed ? moveSpeed : 0);
-        int deltaY = (downPressed ? moveSpeed : 0) - (upPressed ? moveSpeed : 0);
 
-        canvas.setDelta(deltaX, deltaY);
+        canvas.setDelta(deltaX);
     }
 
     private void handleKeyPress() {
