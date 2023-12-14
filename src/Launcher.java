@@ -15,11 +15,13 @@ public class Launcher {
         }
 
         new Window();
+        System.out.println("Window created on " + Thread.currentThread());
     }
     
     public static void main(String[] args) throws Exception {
         System.setProperty("sun.java2d.opengl", "true");
 
         SwingUtilities.invokeLater(() -> new Launcher());
+        System.out.println("Main created on " + Thread.currentThread());
     }
 }
