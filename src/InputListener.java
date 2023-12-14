@@ -9,7 +9,7 @@ public class InputListener implements KeyListener {
     private Canvas canvas;
     private Timer timer;
 
-    private int moveSpeed = 5;
+    private int moveSpeed = 1;
 
     private boolean upPressed, downPressed, leftPressed, rightPressed;
 
@@ -58,8 +58,8 @@ public class InputListener implements KeyListener {
         }
 
         // Update delta values based on the combination of pressed keys
-        int deltaX = (rightPressed ? 1 : 0) - (leftPressed ? 1 : 0);
-        int deltaY = (downPressed ? 1 : 0) - (upPressed ? 1 : 0);
+        int deltaX = (rightPressed ? moveSpeed : 0) - (leftPressed ? moveSpeed : 0);
+        int deltaY = (downPressed ? moveSpeed : 0) - (upPressed ? moveSpeed : 0);
 
         canvas.setDelta(deltaX, deltaY);
     }
