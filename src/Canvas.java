@@ -45,6 +45,7 @@ public class Canvas extends JPanel {
         g.setColor(Color.RED);
         g.fillRect(0, getHeight() - 50, getWidth(), 50);
 
+        // Draw the player
         g.setColor(Color.BLUE);
         g.fillRect(playerX, playerY, 50, 50);
     }
